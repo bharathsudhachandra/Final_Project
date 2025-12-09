@@ -3,8 +3,7 @@ const path = require("path");
 const fs = require("fs");
 const { MongoClient } = require("mongodb");
 
-const uri = "mongodb+srv://bbach1_db_user:Bharath@final.ooordpi.mongodb.net/Tech-Carrer?retryWrites=true&w=majority&tls=true";
-
+const uri = "mongodb+srv://beprudhvi:prudhvi12@cluster0.pan3cyp.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 const baseDir = path.join(__dirname, "Portfolio");
 
 const server = http.createServer(async (req, res) => {
@@ -13,7 +12,7 @@ const server = http.createServer(async (req, res) => {
         try {
             const client = new MongoClient(uri);
             await client.connect();
-            const jobs = await client.db("Tech-Carrer").collection("jobs").find({}).sort({ id: 1 }).toArray();
+            const jobs = await client.db("job_portal").collection("jobs").find({}).sort({ id: 1 }).toArray();
             await client.close();
             res.writeHead(200, {
                 "Content-Type": "application/json",
