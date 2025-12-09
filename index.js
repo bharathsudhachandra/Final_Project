@@ -3,8 +3,8 @@ const path = require("path");
 const fs = require("fs");
 const { MongoClient } = require("mongodb");
 
-const uri = "mongodb+srv://beprudhvi:prudhvi12@cluster0.pan3cyp.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
-const baseDir = path.join(__dirname, "Portfolio");
+const uri = "mongodb+srv://bbach1_db_user:Bharath@final.ooordpi.mongodb.net/?appName=final";
+const baseDir = path.join(__dirname, "portfolio");
 
 const server = http.createServer(async (req, res) => {
 
@@ -12,7 +12,7 @@ const server = http.createServer(async (req, res) => {
         try {
             const client = new MongoClient(uri);
             await client.connect();
-            const jobs = await client.db("job_portal").collection("jobs").find({}).sort({ id: 1 }).toArray();
+            const jobs = await client.db("Tech-Carrer").collection("jobs").find({}).sort({ id: 1 }).toArray();
             await client.close();
             res.writeHead(200, {
                 "Content-Type": "application/json",
@@ -28,7 +28,7 @@ const server = http.createServer(async (req, res) => {
 
     else if (req.url === "/" || req.url === "/index.html") {
         // Serve the index.html file
-        fs.readFile(path.join(__dirname,"Portfolio","index.html"), (err, content) => {
+        fs.readFile(path.join(__dirname,"portfolio","index.html"), (err, content) => {
             if (err) {
                 res.writeHead(500, { "Content-Type": "text/html" });
                 res.end("<h1>Internal Server Error</h1>");
